@@ -7,6 +7,9 @@ import SeeMore from "../SeeMore/SeeMore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 import { taskUpdate } from "../../pages/api/graph";
+import { calenderevnets } from "../../pages/api/graph";
+
+const USER_PUBLIC_ID="jayasontv@outlook.com"
 
 const ToDoBaseContainer = styled.div`
   display: flex;
@@ -136,6 +139,7 @@ const Todo = (props) => {
         <a href="/">View All</a>
         <rightArrow>
           <FontAwesomeIcon icon={faArrowRight} />
+          <button onClick={()=>calenderevnets(accessToken,USER_PUBLIC_ID,Event)}>get events</button>
         </rightArrow>
       </GotoLinkContainer>
     </ToDoBaseContainer>

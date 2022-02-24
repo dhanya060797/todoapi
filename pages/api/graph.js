@@ -1,7 +1,5 @@
 import { graphConfig } from "../../utils/authConfig";
-import axios from 'axios';
-
-
+import axios from "axios";
 
 /**
  * Attaches a given access token to a Microsoft Graph API call. Returns information about the user
@@ -38,23 +36,40 @@ export async function callMsGraphTodoTaskList(accessToken, taskId) {
     .catch((error) => console.log(error));
 }
 
-
-export function taskUpdate (taskListId,task,accessToken){
-  
+export function taskUpdate(taskListId, task, accessToken) {
   axios({
-    method: 'get',
+    method: "patch",
     url: `${graphConfig.graphMeEndpoint}/${taskListId}/tasks/${task.id}`,
-    headers:{
-      Authorization:`Bearer ${accessToken}`,
-      
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
     },
-    
-    
+    data: {
+      status: "completed",
+    },
   })
-    .then( (response)=>{
+    .then((response) => {
       console.log(response);
     })
-    .catch(error => {
-      console.log(error)
+    .catch((error) => {
+      console.log(error);
     });
+}
+export function calenderevnets(
+  startDateString,
+  endDateString,
+  USER_PUBLIC_ID,
+  accessToken
+) {
+  axios({
+    url: `https://graph.microsoft.com/v1.0/users/${USER_PUBLIC_ID}/calendarview?startdatetime=${startDateString}&enddatetime=${endDateString}&orderby=start/dateTime`,
+
+    method: "GET",
+
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+
+      // "Content-type": "text",
+    },
+  });
 }
