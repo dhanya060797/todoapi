@@ -3,6 +3,7 @@ import styled from "styled-components";
 import agendaData from "../../pages/api/MockData/agendaData";
 import DayView from "../DayView/DayView";
 
+
 const DayViewConatiner = styled.div`
   display: flex;
   flex-direction: row;
@@ -13,7 +14,7 @@ const DayViewConatiner = styled.div`
   margin: 2rem 2rem 0 2rem;
   padding: 1rem;
   ul {
-    padding-left: 0;
+    padding-left:0;
   }
 `;
 
